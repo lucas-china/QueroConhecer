@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Aeg-Ql-Lbg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Aeg-Ql-Lbg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,7 +55,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Npf-ly-HFr"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GB1-WX-PfC">
                             <connections>
-                                <segue destination="BhX-zt-pCW" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="XGy-8w-Zay"/>
+                                <segue destination="BhX-zt-pCW" kind="presentation" identifier="placeFinderSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="XGy-8w-Zay"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -89,6 +89,9 @@
                                         </constraints>
                                         <color key="barTintColor" name="main"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="aeX-x8-FSS" id="8jq-40-vj8"/>
+                                        </connections>
                                     </searchBar>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="joE-gp-2BL">
                                         <rect key="frame" x="6" y="50" width="343" height="315"/>
@@ -133,7 +136,21 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CGW-dh-Bsq" secondAttribute="trailing" constant="20" id="0cn-ga-xnU"/>
+                                    <constraint firstItem="joE-gp-2BL" firstAttribute="leading" secondItem="4v9-yi-ZZb" secondAttribute="leading" constant="6" id="2Ri-fR-dZq"/>
+                                    <constraint firstAttribute="trailing" secondItem="joE-gp-2BL" secondAttribute="trailing" constant="6" id="5ta-qg-38V"/>
+                                    <constraint firstItem="Pmw-q2-cis" firstAttribute="width" secondItem="joE-gp-2BL" secondAttribute="width" id="BLQ-mz-huP"/>
+                                    <constraint firstItem="CGW-dh-Bsq" firstAttribute="leading" secondItem="4v9-yi-ZZb" secondAttribute="leading" constant="20" id="EfW-ep-x2H"/>
+                                    <constraint firstItem="CGW-dh-Bsq" firstAttribute="top" secondItem="4v9-yi-ZZb" secondAttribute="top" id="f3r-6b-Hva"/>
+                                    <constraint firstItem="Pmw-q2-cis" firstAttribute="top" secondItem="joE-gp-2BL" secondAttribute="bottom" constant="6" id="jEk-oa-unW"/>
+                                    <constraint firstItem="joE-gp-2BL" firstAttribute="top" secondItem="CGW-dh-Bsq" secondAttribute="bottom" constant="6" id="zBX-A9-zcz"/>
+                                </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="z9e-Qv-DV6">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                <color key="color" name="main"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -141,7 +158,9 @@
                             <constraint firstItem="3JI-9E-VRL" firstAttribute="leading" secondItem="e0w-VN-1kh" secondAttribute="leading" id="Ieg-fH-OY0"/>
                             <constraint firstItem="4v9-yi-ZZb" firstAttribute="leading" secondItem="OQb-My-gEw" secondAttribute="leading" constant="10" id="JD8-Ou-rPz"/>
                             <constraint firstAttribute="trailing" secondItem="3JI-9E-VRL" secondAttribute="trailing" id="LLq-xc-C0k"/>
+                            <constraint firstItem="z9e-Qv-DV6" firstAttribute="centerY" secondItem="joE-gp-2BL" secondAttribute="centerY" id="Ld8-cK-ska"/>
                             <constraint firstItem="4v9-yi-ZZb" firstAttribute="top" secondItem="OQb-My-gEw" secondAttribute="top" constant="10" id="P6v-qS-lh1"/>
+                            <constraint firstItem="z9e-Qv-DV6" firstAttribute="centerX" secondItem="joE-gp-2BL" secondAttribute="centerX" id="Wih-uK-hhU"/>
                             <constraint firstItem="OQb-My-gEw" firstAttribute="trailing" secondItem="4v9-yi-ZZb" secondAttribute="trailing" constant="10" id="l4L-iP-gsD"/>
                             <constraint firstItem="3JI-9E-VRL" firstAttribute="top" secondItem="e0w-VN-1kh" secondAttribute="topMargin" id="lUL-Df-OoW"/>
                             <constraint firstItem="OQb-My-gEw" firstAttribute="bottom" secondItem="4v9-yi-ZZb" secondAttribute="bottom" constant="10" id="oUl-Ss-eh7"/>
@@ -158,6 +177,7 @@
                     <connections>
                         <outlet property="lbAddress" destination="vrn-tg-7EZ" id="mUr-AR-ArF"/>
                         <outlet property="lbName" destination="ecx-SA-Fbp" id="k5p-QT-ihi"/>
+                        <outlet property="loading" destination="z9e-Qv-DV6" id="Gb0-Xs-GX8"/>
                         <outlet property="mapView" destination="joE-gp-2BL" id="Mqf-gP-sin"/>
                         <outlet property="searchBar" destination="CGW-dh-Bsq" id="KxS-lz-3TM"/>
                         <outlet property="viInfo" destination="Pmw-q2-cis" id="Jbj-RD-EOL"/>
@@ -167,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="1220" y="-90.404797601199405"/>
         </scene>
-        <!--Places Finder View Controller-->
+        <!--Place Finder View Controller-->
         <scene sceneID="T3Y-LR-Eeh">
             <objects>
-                <viewController id="BhX-zt-pCW" customClass="PlacesFinderViewController" customModule="QueroConhecer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BhX-zt-pCW" customClass="PlaceFinderViewController" customModule="QueroConhecer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="to8-rK-vjf" customClass="Pl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

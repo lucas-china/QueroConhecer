@@ -9,7 +9,11 @@
 import UIKit
 import MapKit
 
-class PlacesFinderViewController: UIViewController {
+protocol PlaceFinderDelegate: class {
+    func addPlace(place: Place)
+}
+
+class PlaceFinderViewController: UIViewController {
     
     enum PlaceFinderMessageType {
         case error(String)
@@ -22,6 +26,7 @@ class PlacesFinderViewController: UIViewController {
     @IBOutlet weak var viLoading: UIView!
     
     var place: Place!
+    weak var delegatePlace: PlaceFinderDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +106,8 @@ class PlacesFinderViewController: UIViewController {
         if hasCofirmation {
             let confirmAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 print("OK!!")
+                self.delegatePlace?.addPlace(place: self.place)
+                self.dismiss(animated: true, completion: nil)
             }
             alert.addAction(confirmAction)
         }
